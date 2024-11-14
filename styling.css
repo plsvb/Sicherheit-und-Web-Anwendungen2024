@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#chart-container {
+    display: flex;
+    justify-content: center;
+    max-width: 50%; /* Maximale Breite von 50% */
+    margin: 20px auto; /* Zentriere das Diagramm */
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.section-header {
+    background-color: #e8f4fc;
+    font-weight: bold;
+}
+
+.sub-item {
+    padding-left: 20px;
+}
+
+select {
+    width: 100%;
+    max-width: 120px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+}
