@@ -6,6 +6,7 @@
     <title>Responsive Sicherheits-Checkliste mit Diagramm</title>
     <link rel="stylesheet" href="/Sicherheit-und-Web-Anwendungen2024/styling.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="chart.js" defer></script> <!-- Externes JavaScript -->
 </head>
 <body>
     <h1>Sicherheits-Checkliste</h1>
@@ -14,6 +15,7 @@
     </div>
     <form id="checklist-form">
         <table>
+            <!-- Abschnitt 1: Sicherheitslücken schließen -->
             <tr class="section-header">
                 <th colspan="3">1. Sicherheitslücken schließen</th>
             </tr>
@@ -28,60 +30,153 @@
                     </select>
                 </td>
             </tr>
-            <!-- Weitere Fragen einfügen -->
+            <tr>
+                <td class="sub-item">1.2</td>
+                <td>Wird die Sicherheit regelmäßig geprüft?</td>
+                <td>
+                    <select name="question_1_2">
+                        <option value="0">Nein</option>
+                        <option value="50">Teilweise</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Abschnitt 2: Benutzerzugänge absichern -->
+            <tr class="section-header">
+                <th colspan="3">2. Benutzerzugänge absichern</th>
+            </tr>
+            <tr>
+                <td class="sub-item">2.1</td>
+                <td>Sind sichere Passwörter für alle Benutzer erforderlich?</td>
+                <td>
+                    <select name="question_2_1">
+                        <option value="0">Nein</option>
+                        <option value="50">Teilweise</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="sub-item">2.2</td>
+                <td>Wird eine Multi-Faktor-Authentifizierung genutzt?</td>
+                <td>
+                    <select name="question_2_2">
+                        <option value="0">Nein</option>
+                        <option value="50">Unbekannt</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Abschnitt 3: Datensicherung durchführen -->
+            <tr class="section-header">
+                <th colspan="3">3. Datensicherung durchführen</th>
+            </tr>
+            <tr>
+                <td class="sub-item">3.1</td>
+                <td>Werden regelmäßige Backups durchgeführt?</td>
+                <td>
+                    <select name="question_3_1">
+                        <option value="0">Nein</option>
+                        <option value="50">Teilweise</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Abschnitt 4: Gefahrenbewusstsein schaffen -->
+            <tr class="section-header">
+                <th colspan="3">4. Gefahrenbewusstsein schaffen</th>
+            </tr>
+            <tr>
+                <td class="sub-item">4.1</td>
+                <td>Gibt es Schulungen zum Thema IT-Sicherheit für Mitarbeiter?</td>
+                <td>
+                    <select name="question_4_1">
+                        <option value="0">Nein</option>
+                        <option value="50">Teilweise</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Abschnitt 5: Netzübergänge absichern -->
+            <tr class="section-header">
+                <th colspan="3">5. Netzübergänge absichern</th>
+            </tr>
+            <tr>
+                <td class="sub-item">5.1</td>
+                <td>Wird eine Firewall genutzt?</td>
+                <td>
+                    <select name="question_5_1">
+                        <option value="0">Nein</option>
+                        <option value="50">Teilweise</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Abschnitt 6: Schadprogramme abwehren -->
+            <tr class="section-header">
+                <th colspan="3">6. Schadprogramme abwehren</th>
+            </tr>
+            <tr>
+                <td class="sub-item">6.1</td>
+                <td>Wird eine Anti-Virus-Software verwendet?</td>
+                <td>
+                    <select name="question_6_1">
+                        <option value="0">Nein</option>
+                        <option value="50">Teilweise</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Abschnitt 7: Notfallplan erstellen -->
+            <tr class="section-header">
+                <th colspan="3">7. Notfallplan erstellen</th>
+            </tr>
+            <tr>
+                <td class="sub-item">7.1</td>
+                <td>Gibt es einen dokumentierten Notfallplan?</td>
+                <td>
+                    <select name="question_7_1">
+                        <option value="0">Nein</option>
+                        <option value="50">Teilweise</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Abschnitt 8: Inventarisieren und dokumentieren -->
+            <tr class="section-header">
+                <th colspan="3">8. Inventarisieren und dokumentieren</th>
+            </tr>
+            <tr>
+                <td class="sub-item">8.1</td>
+                <td>Gibt es eine vollständige IT-Inventarisierung?</td>
+                <td>
+                    <select name="question_8_1">
+                        <option value="0">Nein</option>
+                        <option value="50">Teilweise</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="sub-item">8.2</td>
+                <td>Werden alle Änderungen dokumentiert?</td>
+                <td>
+                    <select name="question_8_2">
+                        <option value="0">Nein</option>
+                        <option value="50">Teilweise</option>
+                        <option value="100">Ja</option>
+                    </select>
+                </td>
+            </tr>
         </table>
         <button type="button" onclick="updateChart()">Aktualisieren</button>
     </form>
-
-    <script>
-        // Initialisiere Chart.js mit leeren Daten
-        const ctx = document.getElementById('radarChart').getContext('2d');
-        const radarChart = new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: [
-                    'Sicherheitslücken schließen',
-                    'Benutzerzugänge absichern',
-                    'Datensicherung durchführen',
-                    'Gefahrenbewusstsein schaffen',
-                    'Netzübergänge absichern',
-                    'Schadprogramme abwehren',
-                    'Notfallplan erstellen',
-                    'Inventarisieren und dokumentieren'
-                ],
-                datasets: [{
-                    label: 'Erfüllungsgrad',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0], // Anfangswerte sind 0
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true, // Macht das Diagramm responsive
-                maintainAspectRatio: false, // Deaktiviert die Beibehaltung des Seitenverhältnisses
-                scales: {
-                    r: {
-                        beginAtZero: true,
-                        max: 100
-                    }
-                }
-            }
-        });
-
-        // Funktion zum Aktualisieren des Diagramms basierend auf der Benutzereingabe
-        function updateChart() {
-            const form = document.getElementById('checklist-form');
-            const formData = new FormData(form);
-            let values = [];
-
-            formData.forEach((value) => {
-                values.push(parseInt(value, 10));
-            });
-
-            radarChart.data.datasets[0].data = values;
-            radarChart.update();
-        }
-    </script>
 </body>
 </html>
