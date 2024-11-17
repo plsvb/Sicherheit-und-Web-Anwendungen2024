@@ -1,3 +1,25 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 /* Dashboard Layout */
 .dashboard {
     display: flex;
@@ -33,30 +55,60 @@ select {
     max-width: 400px;
 }
 
-/* Scores Styles */
+/* Scores Layout */
 .scores {
-    flex: 1;
-    min-width: 300px;
-    max-width: 30%;
+    flex: 2;
+    min-width: 400px;
     background: #fff;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.scores .score {
-    margin-bottom: 1.5rem;
+.scores h2 {
+    margin-bottom: 1rem;
 }
 
-.scores .score p {
-    font-size: 1.2rem;
-    margin: 0 0 0.5rem;
+.scores-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.score {
+    flex: 1;
+    min-width: 120px;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.score p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.info-btn:hover {
+    background-color: #45a049;
 }
 
 /* Charts Styles */
 .charts {
-    flex: 2;
-    min-width: 400px;
+    flex: 3;
+    min-width: 500px;
     background: #fff;
     padding: 1.5rem;
     border-radius: 8px;
@@ -102,19 +154,4 @@ select {
     cursor: pointer;
     font-size: 1.5rem;
     color: #333;
-}
-
-.info-btn {
-    margin-top: 0.5rem;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 0.9rem;
-}
-
-.info-btn:hover {
-    background-color: #45a049;
 }
