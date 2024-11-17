@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Systembewertung Dashboard</title>
-    <link rel="stylesheet" href="https://plsvb.github.io/Sicherheit-und-Web-Anwendungen2024/styling.css">
+    <link rel="stylesheet" href="https://github.com/plsvb/Sicherheit-und-Web-Anwendungen2024/styling.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://plsvb.github.io/Sicherheit-und-Web-Anwendungen2024/chart.js" defer></script>
+    <script src="https://github.com/plsvb/Sicherheit-und-Web-Anwendungen2024/chart.js" defer></script>
 </head>
 <body>
     <header>
@@ -18,48 +18,76 @@
         <section class="questionnaire">
             <h2>Fragen zu Ihrem System</h2>
             <form id="system-form">
-                <div class="question">
-                    <label for="system-importance">Wie wichtig ist das betroffene System für den Betrieb?</label>
-                    <select id="system-importance" name="importance">
-                        <option value="3">Kritisch</option>
-                        <option value="2">Wichtig</option>
-                        <option value="1">Weniger wichtig</option>
-                    </select>
-                </div>
-                <div class="question">
-                    <label for="data-sensitivity">Welche Art von Daten verarbeitet das System?</label>
-                    <select id="data-sensitivity" name="sensitivity">
-                        <option value="3">Sensible Daten (z. B. personenbezogene Daten)</option>
-                        <option value="2">Geschäftsdaten (z. B. interne Dokumente)</option>
-                        <option value="1">Allgemeine Daten (z. B. öffentlich zugängliche Informationen)</option>
-                    </select>
-                </div>
-                <div class="question">
-                    <label for="system-access">Wie zugänglich ist das System?</label>
+                <div class="question epss">
+                    <label for="system-access">
+                        Wie zugänglich ist das System? <span class="info">(EPSS)</span>
+                    </label>
                     <select id="system-access" name="accessibility">
-                        <option value="3">Öffentlich zugänglich</option>
+                        <option value="3" selected>Öffentlich zugänglich</option>
                         <option value="2">Teilweise zugänglich</option>
                         <option value="1">Nur intern zugänglich</option>
                     </select>
                 </div>
-                <div class="question">
-                    <label for="patch-speed">Wie schnell können Sicherheitsupdates eingespielt werden?</label>
+                <div class="question epss">
+                    <label for="patch-speed">
+                        Wie schnell können Sicherheitsupdates eingespielt werden? <span class="info">(EPSS)</span>
+                    </label>
                     <select id="patch-speed" name="patch">
-                        <option value="1">Sofort</option>
+                        <option value="1" selected>Sofort</option>
                         <option value="2">Innerhalb einer Woche</option>
                         <option value="3">Länger als eine Woche</option>
                     </select>
                 </div>
-                <button type="button" id="calculate-score">Score berechnen</button>
+                <div class="question cvss">
+                    <label for="data-sensitivity">
+                        Welche Art von Daten verarbeitet das System? <span class="info">(CVSS)</span>
+                    </label>
+                    <select id="data-sensitivity" name="sensitivity">
+                        <option value="3" selected>Sensible Daten</option>
+                        <option value="2">Geschäftsdaten</option>
+                        <option value="1">Allgemeine Daten</option>
+                    </select>
+                </div>
+                <div class="question cvss">
+                    <label for="system-importance">
+                        Wie wichtig ist das betroffene System für den Betrieb? <span class="info">(CVSS)</span>
+                    </label>
+                    <select id="system-importance" name="importance">
+                        <option value="3" selected>Kritisch</option>
+                        <option value="2">Wichtig</option>
+                        <option value="1">Weniger wichtig</option>
+                    </select>
+                </div>
             </form>
         </section>
 
         <!-- Ergebnisse -->
         <section class="results">
             <h2>Berechnete Scores</h2>
-            <p><strong>EPSS-Wert:</strong> <span id="epss-result">--</span></p>
-            <p><strong>CVSS-Wert:</strong> <span id="cvss-result">--</span></p>
-            <p><strong>Risikoscore:</strong> <span id="risk-score-result">--</span></p>
+            <p>
+                <strong>
+                    EPSS-Wert: 
+                    <span id="epss-result" title="EPSS beschreibt die Wahrscheinlichkeit, dass eine Schwachstelle ausgenutzt wird.">
+                        0.80
+                    </span>
+                </strong>
+            </p>
+            <p>
+                <strong>
+                    CVSS-Wert: 
+                    <span id="cvss-result" title="CVSS bewertet die Schwere einer Schwachstelle basierend auf Auswirkungen und Zugänglichkeit.">
+                        9.0
+                    </span>
+                </strong>
+            </p>
+            <p>
+                <strong>
+                    Risikoscore: 
+                    <span id="risk-score-result" title="Der Risikoscore kombiniert EPSS und CVSS und berücksichtigt kritische Faktoren Ihres Systems.">
+                        8.5
+                    </span>
+                </strong>
+            </p>
         </section>
 
         <!-- Diagramme -->

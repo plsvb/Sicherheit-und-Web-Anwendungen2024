@@ -1,41 +1,15 @@
-document.getElementById('calculate-score').addEventListener('click', () => {
-    // Formulardaten erfassen
-    const systemImportance = parseFloat(document.getElementById('system-importance').value);
-    const dataSensitivity = parseFloat(document.getElementById('data-sensitivity').value);
-    const systemAccess = parseFloat(document.getElementById('system-access').value);
-    const patchSpeed = parseFloat(document.getElementById('patch-speed').value);
+// Beispielwerte
+const exampleEPSS = 0.8;
+const exampleCVSS = 9.0;
+const exampleRiskScore = 8.5;
 
-    // Beispielrechnung für die Werte
-    const epss = calculateEPSS(systemAccess, patchSpeed);
-    const cvss = calculateCVSS(dataSensitivity, systemImportance);
-    const riskScore = calculateRiskScore(epss, cvss);
-
-    // Ergebnisse anzeigen
-    document.getElementById('epss-result').textContent = epss.toFixed(2);
-    document.getElementById('cvss-result').textContent = cvss.toFixed(2);
-    document.getElementById('risk-score-result').textContent = riskScore.toFixed(2);
-
-    // Charts aktualisieren
-    updateBarChart(epss, cvss, riskScore);
-    updateRadarChart(systemImportance, dataSensitivity, systemAccess, patchSpeed);
+// Chart-Initialisierung
+document.addEventListener('DOMContentLoaded', () => {
+    updateBarChart(exampleEPSS, exampleCVSS, exampleRiskScore);
+    updateRadarChart(3, 3, 3, 1);
 });
 
-// Funktion zur Berechnung von EPSS
-function calculateEPSS(access, patch) {
-    return (access * 0.7) + (1 / patch) * 0.3;
-}
-
-// Funktion zur Berechnung von CVSS
-function calculateCVSS(data, importance) {
-    return (data * 0.5) + (importance * 0.5);
-}
-
-// Funktion zur Berechnung des Risikoscores
-function calculateRiskScore(epss, cvss) {
-    return epss * 0.5 + cvss * 0.5;
-}
-
-// Bar Chart Initialisieren
+// Bar Chart
 const barCtx = document.getElementById('barChart').getContext('2d');
 let barChart = new Chart(barCtx, {
     type: 'bar',
@@ -59,12 +33,12 @@ let barChart = new Chart(barCtx, {
     }
 });
 
-// Radar Chart Initialisieren
+// Radar Chart
 const radarCtx = document.getElementById('radarChart').getContext('2d');
 let radarChart = new Chart(radarCtx, {
     type: 'radar',
     data: {
-        labels: ['Systemkritikalität', 'Datensensitivität', 'Systemzugang', 'Patch-Geschwindigkeit'],
+        labels: ['Systemzugang', 'Patch-Geschwindigkeit', 'Datenverarbeitung', 'Systemkritikalität'],
         datasets: [{
             label: 'Bewertung',
             data: [0, 0, 0, 0],
@@ -89,7 +63,7 @@ function updateBarChart(epss, cvss, riskScore) {
     barChart.update();
 }
 
-function updateRadarChart(importance, sensitivity, access, patch) {
-    radarChart.data.datasets[0].data = [importance, sensitivity, access, patch];
+function updateRadarChart(access, patch, data, importance) {
+    radarChart.data.datasets[0].data = [access, patch, data, importance];
     radarChart.update();
 }
