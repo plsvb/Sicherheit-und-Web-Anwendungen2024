@@ -67,3 +67,29 @@ function updateRadarChart(access, patch, data, importance) {
     radarChart.data.datasets[0].data = [access, patch, data, importance];
     radarChart.update();
 }
+// Funktion zum Anzeigen der Score-Erklärung
+function showInfo(scoreType) {
+    const popup = document.getElementById('popup');
+    const popupText = document.getElementById('popup-text');
+
+    let explanation = '';
+    if (scoreType === 'EPSS') {
+        explanation =
+            'EPSS beschreibt die Wahrscheinlichkeit, dass eine Schwachstelle in der Praxis ausgenutzt wird.';
+    } else if (scoreType === 'CVSS') {
+        explanation =
+            'CVSS bewertet die Schwere einer Schwachstelle basierend auf deren Auswirkungen und Zugänglichkeit.';
+    } else if (scoreType === 'Risiko') {
+        explanation =
+            'Der Risikoscore kombiniert die Wahrscheinlichkeit (EPSS) und die Schwere (CVSS) der Schwachstelle.';
+    }
+
+    popupText.textContent = explanation;
+    popup.classList.remove('hidden');
+}
+
+// Funktion zum Schließen des Popups
+function closePopup() {
+    const popup = document.getElementById('popup');
+    popup.classList.add('hidden');
+}
