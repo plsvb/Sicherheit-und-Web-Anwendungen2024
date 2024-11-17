@@ -145,3 +145,37 @@ select {
     max-width: 100%; /* Responsivität sicherstellen */
     margin: 0 auto; /* Zentriere innerhalb des Containers */
 }
+/* Charts Styles */
+.charts {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.charts h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.chart-container {
+    flex: 1; /* Beide Charts erhalten die gleiche Breite */
+    padding: 1rem;
+    text-align: center; /* Zentriere den Canvas */
+}
+
+.chart-container canvas {
+    width: 100%; /* Passe die Breite dynamisch an */
+    max-width: 400px; /* Maximale Breite der Charts */
+    height: auto; /* Automatische Höhe für Responsivität */
+}
+
+/* Layout für die Charts nebeneinander */
+.charts-container {
+    display: flex; /* Flexbox für horizontale Anordnung */
+    justify-content: space-between; /* Platz zwischen den Charts */
+    gap: 1rem; /* Abstand zwischen den Charts */
+    flex-wrap: wrap; /* Charts umbrechen, falls nicht genug Platz ist */
+}
