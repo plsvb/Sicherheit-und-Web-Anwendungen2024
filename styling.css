@@ -125,3 +125,23 @@ select {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Charts Styles */
+.charts {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+    margin-bottom: 2rem;
+    text-align: center; /* Zentriere die Charts */
+}
+
+.chart-container canvas {
+    width: 400px; /* Setze die Breite */
+    height: 250px; /* Setze die Höhe */
+    max-width: 100%; /* Responsivität sicherstellen */
+    margin: 0 auto; /* Zentriere innerhalb des Containers */
+}
