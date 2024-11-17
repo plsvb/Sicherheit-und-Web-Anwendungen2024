@@ -6,7 +6,7 @@
     <title>Systembewertung Dashboard</title>
     <link rel="stylesheet" href="https://plsvb.github.io/Sicherheit-und-Web-Anwendungen2024/styling.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://plsvb.github.io/Sicherheit-und-Web-Anwendungen2024/chart.js" defer></script>
+    <script defer src="https://plsvb.github.io/Sicherheit-und-Web-Anwendungen2024/chart.js"></script>
 </head>
 <body>
     <header>
@@ -19,9 +19,7 @@
             <h2>Fragen zu Ihrem System</h2>
             <form id="system-form">
                 <div class="question epss">
-                    <label for="system-access">
-                        Wie zugänglich ist das System? <span class="info">(EPSS)</span>
-                    </label>
+                    <label for="system-access">Wie zugänglich ist das System? <span class="info">(EPSS)</span></label>
                     <select id="system-access" name="accessibility">
                         <option value="3" selected>Öffentlich zugänglich</option>
                         <option value="2">Teilweise zugänglich</option>
@@ -29,9 +27,7 @@
                     </select>
                 </div>
                 <div class="question epss">
-                    <label for="patch-speed">
-                        Wie schnell können Sicherheitsupdates eingespielt werden? <span class="info">(EPSS)</span>
-                    </label>
+                    <label for="patch-speed">Wie schnell können Sicherheitsupdates eingespielt werden? <span class="info">(EPSS)</span></label>
                     <select id="patch-speed" name="patch">
                         <option value="1" selected>Sofort</option>
                         <option value="2">Innerhalb einer Woche</option>
@@ -39,9 +35,7 @@
                     </select>
                 </div>
                 <div class="question cvss">
-                    <label for="data-sensitivity">
-                        Welche Art von Daten verarbeitet das System? <span class="info">(CVSS)</span>
-                    </label>
+                    <label for="data-sensitivity">Welche Art von Daten verarbeitet das System? <span class="info">(CVSS)</span></label>
                     <select id="data-sensitivity" name="sensitivity">
                         <option value="3" selected>Sensible Daten</option>
                         <option value="2">Geschäftsdaten</option>
@@ -49,9 +43,7 @@
                     </select>
                 </div>
                 <div class="question cvss">
-                    <label for="system-importance">
-                        Wie wichtig ist das betroffene System für den Betrieb? <span class="info">(CVSS)</span>
-                    </label>
+                    <label for="system-importance">Wie wichtig ist das betroffene System für den Betrieb? <span class="info">(CVSS)</span></label>
                     <select id="system-importance" name="importance">
                         <option value="3" selected>Kritisch</option>
                         <option value="2">Wichtig</option>
@@ -64,17 +56,16 @@
         <!-- Scores -->
         <section class="scores">
             <h2>Berechnete Scores</h2>
-            <div class="score">
-                <p><strong>EPSS-Wert:</strong> <span id="epss-result">0.80</span></p>
-                <button class="info-btn" onclick="showInfo('EPSS')">Was bedeutet dieser Score?</button>
-            </div>
-            <div class="score">
-                <p><strong>CVSS-Wert:</strong> <span id="cvss-result">9.0</span></p>
-                <button class="info-btn" onclick="showInfo('CVSS')">Was bedeutet dieser Score?</button>
-            </div>
-            <div class="score">
-                <p><strong>Risikoscore:</strong> <span id="risk-score-result">8.5</span></p>
-                <button class="info-btn" onclick="showInfo('Risiko')">Was bedeutet dieser Score?</button>
+            <div class="scores-container">
+                <div class="score" data-tooltip="EPSS beschreibt die Wahrscheinlichkeit, dass eine Schwachstelle ausgenutzt wird.">
+                    <p><strong>EPSS-Wert:</strong> <span id="epss-result">0.80</span></p>
+                </div>
+                <div class="score" data-tooltip="CVSS bewertet die Schwere einer Schwachstelle basierend auf deren Auswirkungen und Zugänglichkeit.">
+                    <p><strong>CVSS-Wert:</strong> <span id="cvss-result">9.0</span></p>
+                </div>
+                <div class="score" data-tooltip="Der Risikoscore kombiniert die Wahrscheinlichkeit (EPSS) und die Schwere (CVSS) der Schwachstelle.">
+                    <p><strong>Risikoscore:</strong> <span id="risk-score-result">8.5</span></p>
+                </div>
             </div>
         </section>
 
@@ -89,13 +80,5 @@
             </div>
         </section>
     </main>
-
-    <!-- Popup für Score-Erklärungen -->
-    <div id="popup" class="popup hidden">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup()">×</span>
-            <p id="popup-text"></p>
-        </div>
-    </div>
 </body>
 </html>

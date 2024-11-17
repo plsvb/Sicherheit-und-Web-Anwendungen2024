@@ -19,7 +19,7 @@ header {
 
 main {
     padding: 2rem;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -38,10 +38,6 @@ main {
     margin-bottom: 1rem;
 }
 
-.questionnaire .question {
-    margin-bottom: 1.5rem;
-}
-
 label {
     display: block;
     margin-bottom: 0.5rem;
@@ -57,13 +53,6 @@ select {
     border-radius: 5px;
     background: #f9f9f9;
     color: #333;
-    transition: 0.3s;
-}
-
-select:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-    outline: none;
 }
 
 /* Scores Styles */
@@ -82,11 +71,20 @@ select:focus {
     text-align: center;
 }
 
+.scores-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
 .score {
+    position: relative;
+    flex: 1;
+    max-width: 200px;
     background: #f4f4f4;
     padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 1rem;
     text-align: center;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
@@ -103,19 +101,21 @@ select:focus {
     color: #333;
 }
 
-.info-btn {
-    background-color: #4CAF50;
+.score:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4CAF50;
     color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
+    padding: 0.5rem;
     border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
     font-size: 0.9rem;
-    transition: background-color 0.3s;
-}
-
-.info-btn:hover {
-    background-color: #45a049;
+    margin-top: 0.5rem;
+    z-index: 10;
 }
 
 /* Charts Styles */
@@ -124,15 +124,4 @@ select:focus {
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.charts h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.chart-container {
-    margin-bottom: 2rem;
 }
