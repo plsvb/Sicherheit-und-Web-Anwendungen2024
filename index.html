@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System-Bewertung Dashboard</title>
+    <title>Systembewertung Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>System-Bewertung Dashboard</h1>
+        <h1>Systembewertung Dashboard</h1>
     </header>
 
     <main>
@@ -29,9 +29,17 @@
                 <div class="question">
                     <label for="criticality-input">Wie kritisch ist das betroffene System?</label>
                     <select id="criticality-input" name="criticality">
-                        <option value="2">Kritisch</option>
-                        <option value="1">Mittel</option>
-                        <option value="0">Niedrig</option>
+                        <option value="3">Hoch</option>
+                        <option value="2">Mittel</option>
+                        <option value="1">Niedrig</option>
+                    </select>
+                </div>
+                <div class="question">
+                    <label for="data-input">Welche Art von Daten verarbeitet das System?</label>
+                    <select id="data-input" name="data">
+                        <option value="2">Sensible Daten</option>
+                        <option value="1">Allgemeine Geschäftsdaten</option>
+                        <option value="0.5">Öffentliche Daten</option>
                     </select>
                 </div>
                 <div class="question">
@@ -39,7 +47,7 @@
                     <select id="patch-input" name="patch">
                         <option value="1">Sofort</option>
                         <option value="0.5">Innerhalb von 1 Woche</option>
-                        <option value="0">Länger als 1 Woche</option>
+                        <option value="0.1">Länger als 1 Woche</option>
                     </select>
                 </div>
                 <button type="button" id="calculate-score">Score berechnen</button>
@@ -49,16 +57,17 @@
         <!-- Ergebnisse -->
         <section class="results">
             <h2>Berechnete Scores</h2>
-            <p><strong>EPSS-Wert:</strong> <span id="epss-result">--</span></p>
-            <p><strong>CVSS-Wert:</strong> <span id="cvss-result">--</span></p>
             <p><strong>Risikoscore:</strong> <span id="risk-score-result">--</span></p>
         </section>
 
-        <!-- Diagramm -->
-        <section class="chart-section">
+        <!-- Diagramme -->
+        <section class="charts">
             <h2>Visualisierung</h2>
             <div class="chart-container">
-                <canvas id="riskChart"></canvas>
+                <canvas id="barChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="radarChart"></canvas>
             </div>
         </section>
     </main>

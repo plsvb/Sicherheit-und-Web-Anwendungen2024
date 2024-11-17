@@ -3,64 +3,80 @@ document.getElementById('calculate-score').addEventListener('click', () => {
     const epss = parseFloat(document.getElementById('epss-input').value);
     const cvss = parseFloat(document.getElementById('cvss-input').value);
     const criticality = parseFloat(document.getElementById('criticality-input').value);
+    const dataSensitivity = parseFloat(document.getElementById('data-input').value);
     const patchSpeed = parseFloat(document.getElementById('patch-input').value);
 
-    // Score-Berechnung
-    const riskScore = calculateRiskScore(epss, cvss, criticality, patchSpeed);
+    // Beispielrechnung für den Risikoscore
+    const riskScore = calculateRiskScore(epss, cvss, criticality, dataSensitivity, patchSpeed);
 
     // Ergebnisse anzeigen
-    document.getElementById('epss-result').textContent = (epss * 100).toFixed(2) + '%';
-    document.getElementById('cvss-result').textContent = cvss.toFixed(2);
     document.getElementById('risk-score-result').textContent = riskScore.toFixed(2);
 
-    // Chart aktualisieren
-    updateChart(epss, cvss, riskScore);
+    // Charts aktualisieren
+    updateBarChart(epss, cvss, riskScore);
+    updateRadarChart(epss, cvss, criticality, dataSensitivity, patchSpeed);
 });
 
-// Funktion zur Risikoberechnung
-function calculateRiskScore(epss, cvss, criticality, patchSpeed) {
-    const weightEPSS = 0.4;
-    const weightCVSS = 0.3;
-    const weightCriticality = 0.2;
-    const weightPatch = 0.1;
-
+// Funktion zur Score-Berechnung
+function calculateRiskScore(epss, cvss, criticality, dataSensitivity, patchSpeed) {
     return (
-        epss * weightEPSS +
-        (cvss / 10) * weightCVSS +
-        criticality * weightCriticality +
-        patchSpeed * weightPatch
+        epss * 0.3 +
+        (cvss / 10) * 0.3 +
+        criticality * 0.2 +
+        dataSensitivity * 0.1 +
+        patchSpeed * 0.1
     );
 }
 
-// Chart initialisieren
-const ctx = document.getElementById('riskChart').getContext('2d');
-let riskChart = new Chart(ctx, {
+// Bar Chart Initialisieren
+const barCtx = document.getElementById('barChart').getContext('2d');
+let barChart = new Chart(barCtx, {
+    type: 'bar',
+    data: {
+        labels: ['EPSS', 'CVSS', 'Risikoscore'],
+        datasets: [{
+            label: 'Werte',
+            data: [0, 0, 0],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 99, 132, 1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Radar Chart Initialisieren
+const radarCtx = document.getElementById('radarChart').getContext('2d');
+let radarChart = new Chart(radarCtx, {
     type: 'radar',
     data: {
-        labels: ['EPSS', 'CVSS', 'Systemkritikalität', 'Patch-Geschwindigkeit'],
-        datasets: [
-            {
-                label: 'Bewertung',
-                data: [0, 0, 0, 0], // Initiale Daten
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1,
-            },
-        ],
+        labels: ['EPSS', 'CVSS', 'Systemkritikalität', 'Datensensitivität', 'Patch-Geschwindigkeit'],
+        datasets: [{
+            label: 'Bewertung',
+            data: [0, 0, 0, 0, 0],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
     },
     options: {
         responsive: true,
         scales: {
             r: {
-                beginAtZero: true,
-                max: 1,
-            },
-        },
-    },
+                beginAtZero: true
+            }
+        }
+    }
 });
 
-// Chart-Daten aktualisieren
-function updateChart(epss, cvss, riskScore) {
-    riskChart.data.datasets[0].data = [epss, cvss / 10, riskScore / 2, riskScore / 5];
-    riskChart.update();
-}
+// Charts aktualisieren
+function updateBarChart(epss, cvss, riskScore) {
+    barChart.data.datasets[0].data = [epss, cvss, riskScore];
+    barChart
