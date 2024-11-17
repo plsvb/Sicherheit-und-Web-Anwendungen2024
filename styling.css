@@ -37,7 +37,6 @@ select {
 .scores {
     flex: 1;
     min-width: 300px;
-    max-width: 30%;
     background: #fff;
     padding: 1.5rem;
     border-radius: 8px;
