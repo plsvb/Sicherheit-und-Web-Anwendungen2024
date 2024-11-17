@@ -166,16 +166,23 @@ select {
     text-align: center; /* Zentriere den Canvas */
 }
 
-.chart-container canvas {
-    width: 100%; /* Passe die Breite dynamisch an */
-    max-width: 400px; /* Maximale Breite der Charts */
-    height: auto; /* Automatische Höhe für Responsivität */
-}
-
 /* Layout für die Charts nebeneinander */
 .charts-container {
     display: flex; /* Flexbox für horizontale Anordnung */
-    justify-content: space-between; /* Platz zwischen den Charts */
-    gap: 1rem; /* Abstand zwischen den Charts */
-    flex-wrap: wrap; /* Charts umbrechen, falls nicht genug Platz ist */
+    justify-content: center; /* Charts gleichmäßig zentrieren */
+    align-items: center; /* Vertikale Zentrierung */
+    gap: 2rem; /* Reduzierter Abstand zwischen den Charts */
 }
+
+.chart-container {
+    flex: 1; /* Beide Charts erhalten die gleiche Breite */
+    text-align: center;
+    max-width: 450px; /* Gleiche maximale Breite für beide Charts */
+}
+
+.chart-container canvas {
+    width: 100%; /* Passe die Breite dynamisch an */
+    max-width: 400px; /* Maximale Breite */
+    height: 300px; /* Gleiche Höhe für beide Charts */
+}
+
