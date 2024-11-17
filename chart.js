@@ -53,4 +53,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    const radarCtx = document.getElementById('radarChart').getContext('2d');
+    new Chart(radarCtx, {
+        type: 'radar',
+        data: {
+            labels: ['Systemzugang', 'Patch-Geschwindigkeit', 'Datenverarbeitung', 'Systemkritikalität'],
+            datasets: [{
+                label: 'Bewertung',
+                data: [3, 1, 3, 3],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                r: { beginAtZero: true }
+            }
+        }
+    });
 });

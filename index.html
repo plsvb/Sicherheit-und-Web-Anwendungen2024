@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Systembewertung Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://plsvb.github.io/Sicherheit-und-Web-Anwendungen2024/styling.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js" defer></script>
+    <script src="https://plsvb.github.io/Sicherheit-und-Web-Anwendungen2024/chart.js" defer></script>
 </head>
 <body>
     <header>
         <h1>Systembewertung Dashboard</h1>
     </header>
 
-    <main>
+    <main class="dashboard">
         <!-- Fragebogen -->
         <section class="questionnaire">
             <h2>Fragen zu Ihrem System</h2>
@@ -61,36 +61,24 @@
             </form>
         </section>
 
-        <!-- Ergebnisse -->
-        <section class="results">
+        <!-- Scores -->
+        <section class="scores">
             <h2>Berechnete Scores</h2>
-            <p>
-                <strong>
-                    EPSS-Wert: 
-                    <span id="epss-result" title="EPSS beschreibt die Wahrscheinlichkeit, dass eine Schwachstelle ausgenutzt wird.">
-                        0.80
-                    </span>
-                </strong>
-            </p>
-            <p>
-                <strong>
-                    CVSS-Wert: 
-                    <span id="cvss-result" title="CVSS bewertet die Schwere einer Schwachstelle basierend auf Auswirkungen und Zugänglichkeit.">
-                        9.0
-                    </span>
-                </strong>
-            </p>
-            <p>
-                <strong>
-                    Risikoscore: 
-                    <span id="risk-score-result" title="Der Risikoscore kombiniert EPSS und CVSS und berücksichtigt kritische Faktoren Ihres Systems.">
-                        8.5
-                    </span>
-                </strong>
-            </p>
+            <div class="score">
+                <p><strong>EPSS-Wert:</strong> <span id="epss-result">0.80</span></p>
+                <button class="info-btn" onclick="showInfo('EPSS')">Was bedeutet dieser Score?</button>
+            </div>
+            <div class="score">
+                <p><strong>CVSS-Wert:</strong> <span id="cvss-result">9.0</span></p>
+                <button class="info-btn" onclick="showInfo('CVSS')">Was bedeutet dieser Score?</button>
+            </div>
+            <div class="score">
+                <p><strong>Risikoscore:</strong> <span id="risk-score-result">8.5</span></p>
+                <button class="info-btn" onclick="showInfo('Risiko')">Was bedeutet dieser Score?</button>
+            </div>
         </section>
 
-        <!-- Diagramme -->
+        <!-- Visualisierung -->
         <section class="charts">
             <h2>Visualisierung</h2>
             <div class="chart-container">
@@ -101,5 +89,13 @@
             </div>
         </section>
     </main>
+
+    <!-- Popup für Score-Erklärungen -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <p id="popup-text"></p>
+        </div>
+    </div>
 </body>
 </html>
