@@ -79,4 +79,10 @@ let radarChart = new Chart(radarCtx, {
 // Charts aktualisieren
 function updateBarChart(epss, cvss, riskScore) {
     barChart.data.datasets[0].data = [epss, cvss, riskScore];
-    barChart
+    barChart.update();
+}
+
+function updateRadarChart(epss, cvss, criticality, dataSensitivity, patchSpeed) {
+    radarChart.data.datasets[0].data = [epss, cvss / 10, criticality, dataSensitivity, patchSpeed];
+    radarChart.update();
+}
