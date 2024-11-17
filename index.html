@@ -3,12 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Sicherheits-Checkliste mit Diagramm</title>
+    <title>EPSS & CVSS Visualisierung</title>
     <link rel="stylesheet" href="/Sicherheit-und-Web-Anwendungen2024/styling.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/Sicherheit-und-Web-Anwendungen2024/chart.js" defer></script> <!-- Externes JavaScript -->
+    <script src="/Sicherheit-und-Web-Anwendungen2024/customCharts.js" defer></script> <!-- Externes JavaScript -->
 </head>
 <body>
+    <h1>EPSS & CVSS Visualisierung</h1>
+
+    <!-- Wahrscheinlichkeit der Ausnutzung nach EPSS -->
+    <h2>Wahrscheinlichkeit der Ausnutzung (EPSS)</h2>
+    <div id="epss-chart-container">
+        <canvas id="barChart"></canvas>
+    </div>
+
+    <!-- Schwere vs. Ausnutzung (CVSS vs. EPSS) -->
+    <h2>Schwere vs. Ausnutzung (CVSS vs. EPSS)</h2>
+    <div id="cvss-epss-chart-container">
+        <canvas id="bubbleChart"></canvas>
+    </div>
+
+    <!-- Sicherheits-Checkliste -->
     <h1>Sicherheits-Checkliste</h1>
     <div id="chart-container">
         <canvas id="radarChart"></canvas>
